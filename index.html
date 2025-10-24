@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="site.title">卒纷雨 - 官方网站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="#" data-i18n-key="site.logo">卒纷雨 | cufeny</a>
+        </div>
+        <!-- 搜索框 -->
+        <div class="group">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+                <g>
+                    <path
+                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                    ></path>
+                </g>
+            </svg>
+            <input
+                id="query"
+                class="input"
+                type="search"
+                placeholder="搜索..."
+                data-i18n-key="search.placeholder"
+                name="searchbar"
+            />
+        </div>
+        <nav class="nav-links">
+            <a href="#" data-i18n-key="nav.home">主页</a>
+            <a href="#" data-i18n-key="nav.hot">热点</a>
+            <a href="#" data-i18n-key="nav.games">游戏</a>
+            <a href="#" data-i18n-key="nav.about">关于</a>
+            <!-- 语言切换下拉菜单 -->
+            <div class="language-selector">
+                <button class="language-toggle" title="切换语言" data-current-lang="zh">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span class="lang-text">中文</span>
+                    <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="language-menu">
+                    <button class="language-option" data-lang="zh">中文</button>
+                    <button class="language-option" data-lang="en">English</button>
+                    <button class="language-option" data-lang="ja">日本語</button>
+                    <button class="language-option" data-lang="ko">한국어</button>
+                    <button class="language-option" data-lang="fr">Français</button>
+                    <button class="language-option" data-lang="es">Español</button>
+                </div>
+            </div>
+            <!-- From Uiverse.io by Galahhad -->
+            <label class="theme-switch">
+              <input type="checkbox" class="theme-switch__checkbox">
+              <div class="theme-switch__container">
+                <div class="theme-switch__clouds"></div>
+                <div class="theme-switch__stars-container">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+                <div class="theme-switch__circle-container">
+                  <div class="theme-switch__sun-moon-container">
+                    <div class="theme-switch__moon">
+                      <div class="theme-switch__spot"></div>
+                      <div class="theme-switch__spot"></div>
+                      <div class="theme-switch__spot"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+            <!-- Steam下载按钮 -->
+             <a class="playstore-button" href="#" title="在Steam上下载">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.868 12.683a1.715 1.715 0 0 0 1.318-3.165 1.7 1.7 0 0 0-1.263-.02l1.023.424a1.261 1.261 0 1 1-.97 2.33l-.99-.41a1.7 1.7 0 0 0 .882.84Zm3.726-6.687a2.03 2.03 0 0 0 2.027 2.029 2.03 2.03 0 0 0 2.027-2.029 2.03 2.03 0 0 0-2.027-2.027 2.03 2.03 0 0 0-2.027 2.027m2.03-1.527a1.524 1.524 0 1 1-.002 3.048 1.524 1.524 0 0 1 .002-3.048"/>
+                <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z"/>
+               </svg>
+               <span class="texts">
+                 <span class="text-1" data-i18n-key="steam.download.prefix">在</span>
+                 <span class="text-2" data-i18n-key="steam.download">Steam上下载</span>
+               </span>
+             </a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 顶部内容区域 -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <!-- 左侧：大logo和文字 -->
+                <div class="logo-text-container">
+                    <div class="large-logo">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="brand-info">
+                        <h1 class="brand-name" data-i18n-key="site.logo">卒纷雨 | cufeny</h1>
+                        <p class="brand-slogan" data-i18n-key="site.slogan">创新科技，连接未来</p>
+                    </div>
+                </div>
+                
+                <!-- 右侧：轮播图标 -->
+                <div class="carousel-container">
+                    <!-- 轮播指示器 -->
+                    <div class="carousel-indicators">
+                        <button class="indicator active" data-index="0"></button>
+                        <button class="indicator" data-index="1"></button>
+                        <button class="indicator" data-index="2"></button>
+                    </div>
+                    <div class="carousel">
+                        <div class="carousel-item active">
+                            <svg width="100" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="carousel-item">
+                            <svg width="100" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path d="M21 15l-5-5L5 21"/>
+                            </svg>
+                        </div>
+                        <div class="carousel-item">
+                            <svg width="100" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 0 0 6.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 0 0 6.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 游戏下载区域 -->
+        <section class="game-download-section">
+            <div class="game-container">
+                <div class="game-info">
+                    <h2 class="game-title" data-i18n-key="game.title">梦幻奇境</h2>
+                    <p class="game-description" data-i18n-key="game.description">探索广阔的2D开放世界，解开古老的谜题，开启一段奇幻冒险之旅。</p>
+                    <div class="game-tags">
+                        <span class="tag" data-i18n-key="game.tag.2dopenworld">2D开放世界</span>
+                        <span class="tag" data-i18n-key="game.tag.adventure">探险冒险</span>
+                        <span class="tag" data-i18n-key="game.tag.puzzle">解密</span>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="#" class="download-button primary" data-i18n-key="game.download.primary">立即下载</a>
+                        <a href="#" class="download-button secondary" data-i18n-key="game.download.secondary">了解更多</a>
+                    </div>
+                </div>
+                <div class="game-preview">
+                    <svg width="300" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 游戏预览图：2D开放世界场景 -->
+                        <rect x="2" y="2" width="20" height="16" rx="1" fill="#87CEEB"/>
+                        <path d="M2 18L12 10L22 18" stroke="#2E8B57" stroke-width="1.5" fill="#3CB371"/>
+                        <path d="M10 14L14 14" stroke="#654321" stroke-width="1"/>
+                        <circle cx="12" cy="12" r="1" fill="#FFD700"/>
+                        <path d="M8 6L10 6M14 6L16 6" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                        <rect x="10" y="8" width="4" height="2" rx="1" fill="#A0522D"/>
+                        <path d="M4 10L5 10M19 10L20 10" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+                             
+    <footer>
+        <!-- 工作室介绍 -->
+        <div class="studio-info">
+            <div class="studio-about">
+                <h3 data-i18n-key="footer.studio.title">关于卒纷雨工作室</h3>
+                <p data-i18n-key="footer.studio.description">卒纷雨工作室成立于2023年，是一家专注于独立游戏开发的团队。我们致力于创造富有创意和深度的游戏体验，让玩家在游戏中探索未知世界，体验精彩故事。</p>
+                <div class="studio-mission">
+                    <h4 data-i18n-key="footer.studio.mission">我们的使命</h4>
+                    <p data-i18n-key="footer.studio.mission.desc">用游戏连接世界，用创意点亮生活。我们相信游戏不仅是娱乐，更是一种艺术表达方式。</p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <h3 data-i18n-key="footer.contact.title">联系我们</h3>
+                <p data-i18n-key="footer.contact.email">邮箱: contact@cufeny.com</p>
+                <p data-i18n-key="footer.contact.address">地址: 上海市浦东新区张江高科技园区</p>
+            </div>
+        </div>
+        
+        <!-- 社交媒体链接 -->
+        <div class="social-links">
+            <a href="#" class="social-link" data-social="twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+            </a>
+            <a href="#" class="social-link" data-social="facebook" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </a>
+            <a href="#" class="social-link" data-social="instagram" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="#" class="social-link" data-social="discord" title="Discord">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18.5 15a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 15a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                    <path d="M15 10.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3zM9 10.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+                    <path d="M12 9a3 3 0 0 0 0 6"></path>
+                </svg>
+            </a>
+            <a href="#" class="social-link" data-social="youtube" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </a>
+        </div>
+        
+        <!-- 版权信息 -->
+        <div class="copyright">
+            <p data-i18n-key="footer.copyright">© 2023 卒纷雨工作室. 保留所有权利.</p>
+        </div>
+        
+        <!-- 测试版标识 -->
+        <div class="beta-badge">
+            <span class="beta-label" data-i18n-key="footer.beta">测试版</span>
+        </div>
+    </footer>
+
+    <script>
+        // 语言切换功能 - 基于国际化(i18n)实现
+        // 语言包定义 - 添加更多全球语言
+        const i18n = {
+            zh: {
+                'site.title': '卒纷雨 - 官方网站',
+                'site.logo': '卒纷雨 | cufeny',
+                'nav.home': '主页',
+                'nav.hot': '热点',
+                'nav.games': '游戏',
+                'nav.about': '关于',
+                'lang.switch': '切换语言',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': '在',
+                'steam.download': 'Steam上下载',
+                'games.section.title': '游戏',
+                'games.test.name': '测试',
+                'games.test.version': '1.2',
+                'game.title': '梦幻奇境',
+                'game.description': '探索广阔的2D开放世界，解开古老的谜题，开启一段奇幻冒险之旅。',
+                'game.tag.2dopenworld': '2D开放世界',
+                'game.tag.adventure': '探险冒险',
+                'game.tag.puzzle': '解密',
+                'game.download.primary': '立即下载',
+                'game.download.secondary': '了解更多',
+                'footer.studio.title': '关于卒纷雨工作室',
+                'footer.studio.description': '卒纷雨工作室成立于2023年，是一家专注于独立游戏开发的团队。我们致力于创造富有创意和深度的游戏体验，让玩家在游戏中探索未知世界，体验精彩故事。',
+                'footer.studio.mission': '我们的使命',
+                'footer.studio.mission.desc': '用游戏连接世界，用创意点亮生活。我们相信游戏不仅是娱乐，更是一种艺术表达方式。',
+                'footer.contact.title': '联系我们',
+                'footer.contact.email': '邮箱: contact@cufeny.com',
+                'footer.contact.address': '地址: 上海市浦东新区张江高科技园区',
+                'footer.copyright': '© 2023 卒纷雨工作室. 保留所有权利.',
+                'footer.beta': '测试版'
+            },
+            en: {
+                'site.title': 'Cufeny - Official Website',
+                'site.logo': 'Cufeny | 卒纷雨',
+                'nav.home': 'Home',
+                'nav.hot': 'Hot',
+                'nav.games': 'Games',
+                'nav.about': 'About',
+                'lang.switch': 'Switch Language',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': 'Download',
+                'steam.download': 'on Steam',
+                'games.section.title': 'Games',
+                'games.test.name': 'Test',
+                'games.test.version': '1.2',
+                'game.title': 'Dreamland Adventure',
+                'game.description': 'Explore the vast 2D open world, solve ancient puzzles, and embark on a magical adventure.',
+                'game.tag.2dopenworld': '2D Open World',
+                'game.tag.adventure': 'Adventure',
+                'game.tag.puzzle': 'Puzzle',
+                'game.download.primary': 'Download Now',
+                'game.download.secondary': 'Learn More',
+                'footer.studio.title': 'About Cufeny Studio',
+                'footer.studio.description': 'Cufeny Studio was founded in 2023, a team focused on indie game development. We are committed to creating creative and immersive gaming experiences, allowing players to explore unknown worlds and experience wonderful stories.',
+                'footer.studio.mission': 'Our Mission',
+                'footer.studio.mission.desc': 'Connecting the world through games, illuminating life with creativity. We believe games are not just entertainment, but also a form of artistic expression.',
+                'footer.contact.title': 'Contact Us',
+                'footer.contact.email': 'Email: contact@cufeny.com',
+                'footer.contact.address': 'Address: Zhangjiang High-Tech Park, Pudong New District, Shanghai',
+                'footer.copyright': '© 2023 Cufeny Studio. All rights reserved.',
+                'footer.beta': 'Beta Version'
+            },
+            ja: {
+                'site.title': '卒紛雨 - 公式サイト',
+                'site.logo': '卒紛雨 | cufeny',
+                'nav.home': 'ホーム',
+                'nav.hot': '人気',
+                'nav.games': 'ゲーム',
+                'nav.about': '会社概要',
+                'lang.switch': '言語切り替え',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': 'ダウンロード',
+                'steam.download': 'Steamで',
+                'games.section.title': 'ゲーム',
+                'games.test.name': 'テスト',
+                'games.test.version': '1.2',
+                'game.title': '夢の国冒険',
+                'game.description': '広大な2Dオープンワールドを探索し、古代の謎を解き明かし、魔法の冒険の旅に出よう。',
+                'game.tag.2dopenworld': '2Dオープンワールド',
+                'game.tag.adventure': '冒険',
+                'game.tag.puzzle': 'パズル',
+                'game.download.primary': '今すぐダウンロード',
+                'game.download.secondary': '詳細を見る',
+                'footer.studio.title': '卒紛雨スタジオについて',
+                'footer.studio.description': '卒紛雨スタジオは2023年に設立されたインディーゲーム開発チームです。私たちは創造性豊かで奥深いゲーム体験を提供し、プレイヤーが未知の世界を探索し、素晴らしいストーリーを体験できるよう努めています。',
+                'footer.studio.mission': '私たちの使命',
+                'footer.studio.mission.desc': 'ゲームを通じて世界を繋ぎ、創造性で生活を彩る。ゲームは単なる娯楽ではなく、芸術的表現形式であると信じています。',
+                'footer.contact.title': 'お問い合わせ',
+                'footer.contact.email': 'メール: contact@cufeny.com',
+                'footer.contact.address': '住所: 上海市浦東新区張江高科技園区',
+                'footer.copyright': '© 2023 卒紛雨スタジオ. 全著作権所有.',
+                'footer.beta': 'ベータ版'
+            },
+            ko: {
+                'site.title': '쥬펜위 - 공식 웹사이트',
+                'site.logo': '쥬펜위 | cufeny',
+                'nav.home': '홈',
+                'nav.hot': '인기',
+                'nav.games': '게임',
+                'nav.about': '소개',
+                'lang.switch': '언어 전환',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': '다운로드',
+                'steam.download': 'Steam에서',
+                'games.section.title': '게임',
+                'games.test.name': '테스트',
+                'games.test.version': '1.2',
+                'game.title': '꿈의 나라 모험',
+                'game.description': '방대한 2D 오픈 월드를 탐험하고, 고대 미스테리를 풀며, 마법의 모험 여행을 시작하세요.',
+                'game.tag.2dopenworld': '2D 오픈 월드',
+                'game.tag.adventure': '어드벤처',
+                'game.tag.puzzle': '퍼즐',
+                'game.download.primary': '지금 다운로드',
+                'game.download.secondary': '자세히 알아보기',
+                'footer.studio.title': '쥬펜위 스튜디오 소개',
+                'footer.studio.description': '쥬펜위 스튜디오는 2023년에 설립된 인디 게임 개발팀입니다. 우리는 창의적이고 깊이 있는 게임 경험을 창조하여 플레이어가 미지의 세계를 탐험하고 멋진 이야기를 경험할 수 있도록 노력하고 있습니다.',
+                'footer.studio.mission': '우리의 미션',
+                'footer.studio.mission.desc': '게임을 통해 세상을 연결하고, 창조로 삶을 밝힙니다. 우리는 게임이 단순한 엔터테인먼트가 아닌 예술적 표현 형식이라고 믿습니다.',
+                'footer.contact.title': '연락처',
+                'footer.contact.email': '이메일: contact@cufeny.com',
+                'footer.contact.address': '주소: 상하이시 푸동신구 장강하이테크 단지',
+                'footer.copyright': '© 2023 쥬펜위 스튜디오. 모든 권리 보유.',
+                'footer.beta': '베타 버전'
+            },
+            fr: {
+                'site.title': 'Cufeny - Site Officiel',
+                'site.logo': 'Cufeny | 卒纷雨',
+                'nav.home': 'Accueil',
+                'nav.hot': 'Populaires',
+                'nav.games': 'Jeux',
+                'nav.about': 'À propos',
+                'lang.switch': 'Changer de langue',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': 'Télécharger',
+                'steam.download': 'sur Steam',
+                'games.section.title': 'Jeux',
+                'games.test.name': 'Test',
+                'games.test.version': '1.2',
+                'game.title': 'Aventure dans le Rêve',
+                'game.description': 'Explorez le vaste monde ouvert en 2D, résolvez d\'anciens énigmes et partez à l\'aventure magique.',
+                'game.tag.2dopenworld': 'Monde Open 2D',
+                'game.tag.adventure': 'Aventure',
+                'game.tag.puzzle': 'Énigme',
+                'game.download.primary': 'Télécharger Maintenant',
+                'game.download.secondary': 'En Savoir Plus',
+                'footer.studio.title': 'À propos de Cufeny Studio',
+                'footer.studio.description': 'Cufeny Studio a été fondé en 2023, une équipe spécialisée dans le développement de jeux indés. Nous nous consacrons à créer des expériences de jeu créatives et immersives, permettant aux joueurs d\'explorer des mondes inconnus et de vivre des histoires magnifiques.',
+                'footer.studio.mission': 'Notre Mission',
+                'footer.studio.mission.desc': 'Connecter le monde à travers les jeux, éclairer la vie avec la créativité. Nous croyons que les jeux ne sont pas seulement un divertissement, mais aussi une forme d\'expression artistique.',
+                'footer.contact.title': 'Contactez-nous',
+                'footer.contact.email': 'Email: contact@cufeny.com',
+                'footer.contact.address': 'Adresse: Parc de haute technologie de Zhangjiang, District de Pudong, Shanghai',
+                'footer.copyright': '© 2023 Cufeny Studio. Tous droits réservés.',
+                'footer.beta': 'Version Beta'
+            },
+            es: {
+                'site.title': 'Cufeny - Sitio Oficial',
+                'site.logo': 'Cufeny | 卒纷雨',
+                'nav.home': 'Inicio',
+                'nav.hot': 'Tendencias',
+                'nav.games': 'Juegos',
+                'nav.about': 'Acerca de',
+                'lang.switch': 'Cambiar idioma',
+                'lang.zh': '中文',
+                'lang.en': 'English',
+                'lang.ja': '日本語',
+                'lang.ko': '한국어',
+                'lang.fr': 'Français',
+                'lang.es': 'Español',
+                'steam.download.prefix': 'Descargar',
+                'steam.download': 'en Steam',
+                'games.section.title': 'Juegos',
+                'games.test.name': 'Prueba',
+                'games.test.version': '1.2',
+                'game.title': 'Aventura en el Sueño',
+                'game.description': 'Explora el vasto mundo abierto en 2D, resuelve antiguos acertijos y embárcate en una aventura mágica.',
+                'game.tag.2dopenworld': 'Mundo Abierto 2D',
+                'game.tag.adventure': 'Aventura',
+                'game.tag.puzzle': 'Rompecabezas',
+                'game.download.primary': 'Descargar Ahora',
+                'game.download.secondary': 'Saber Más',
+                'footer.studio.title': 'Acerca de Cufeny Studio',
+                'footer.studio.description': 'Cufeny Studio fue fundado en 2023, un equipo especializado en el desarrollo de juegos indie. Nos dedicamos a crear experiencias de juego creativas y profundas, permitiendo a los jugadores explorar mundos desconocidos y vivir historias maravillosas.',
+                'footer.studio.mission': 'Nuestra Misión',
+                'footer.studio.mission.desc': 'Conectar el mundo a través de los juegos, iluminar la vida con la creatividad. Creemos que los juegos no son solo entretenimiento, sino también una forma de expresión artística.',
+                'footer.contact.title': 'Contáctenos',
+                'footer.contact.email': 'Correo electrónico: contact@cufeny.com',
+                'footer.contact.address': 'Dirección: Parque de Alta Tecnología de Zhangjiang, Distrito de Pudong, Shanghái',
+                'footer.copyright': '© 2023 Cufeny Studio. Todos los derechos reservados.',
+                'footer.beta': 'Versión Beta'
+            }
+        };
+
+        // 切换语言的函数
+        function changeLanguage(lang) {
+            // 更新HTML中所有带有data-i18n-key属性的元素
+            document.querySelectorAll('[data-i18n-key]').forEach(element => {
+                const key = element.getAttribute('data-i18n-key');
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.textContent = i18n[lang][key];
+                }
+            });
+            
+            // 更新页面语言属性
+            const langMap = {
+                'zh': 'zh-CN',
+                'en': 'en',
+                'ja': 'ja',
+                'ko': 'ko',
+                'fr': 'fr',
+                'es': 'es'
+            };
+            document.documentElement.lang = langMap[lang] || 'zh-CN';
+            
+            // 更新语言切换按钮的状态
+            const langToggle = document.querySelector('.language-toggle');
+            langToggle.setAttribute('data-current-lang', lang);
+            langToggle.querySelector('.lang-text').textContent = i18n[lang]['lang.' + lang];
+            
+            // 保存语言偏好到本地存储
+            localStorage.setItem('language', lang);
+        }
+
+        // 暗色主题切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取必要的DOM元素
+            const body = document.body;
+            const themeSwitch = document.querySelector('.theme-switch__checkbox');
+            
+            // 检查本地存储中是否有保存的语言偏好
+            const savedLanguage = localStorage.getItem('language') || 'zh';
+            changeLanguage(savedLanguage);
+            
+            // 语言切换逻辑
+            const languageSelector = document.querySelector('.language-selector');
+            const languageToggle = document.querySelector('.language-toggle');
+            const languageMenu = document.querySelector('.language-menu');
+            const languageOptions = document.querySelectorAll('.language-option');
+            const langText = languageToggle.querySelector('.lang-text');
+            let currentLang = localStorage.getItem('preferredLanguage') || 'zh';
+            
+            // 支持的语言列表
+            const supportedLanguages = ['zh', 'en', 'ja', 'ko', 'fr', 'es'];
+            
+            // 更新当前显示的语言文本
+            function updateLanguageDisplay() {
+                // 修复键名错误
+                langText.textContent = i18n[currentLang]['lang.' + currentLang];
+                languageToggle.setAttribute('data-current-lang', currentLang);
+                
+                // 更新选项的激活状态
+                languageOptions.forEach(option => {
+                    if (option.getAttribute('data-lang') === currentLang) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+            
+            // 切换菜单显示状态
+            function toggleMenu() {
+                languageSelector.classList.toggle('open');
+                languageMenu.classList.toggle('show');
+            }
+            
+            // 关闭菜单
+            function closeMenu() {
+                languageSelector.classList.remove('open');
+                languageMenu.classList.remove('show');
+            }
+            
+            // 语言切换按钮点击事件
+            languageToggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // 阻止冒泡
+                toggleMenu();
+            });
+            
+            // 语言选项点击事件
+            languageOptions.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation(); // 阻止冒泡
+                    const newLang = option.getAttribute('data-lang');
+                    
+                    if (newLang !== currentLang) {
+                        currentLang = newLang;
+                        
+                        // 调用语言切换函数
+                        changeLanguage(currentLang);
+                        
+                        // 更新显示
+                        updateLanguageDisplay();
+                        
+                        // 保存语言偏好到本地存储
+                        localStorage.setItem('preferredLanguage', currentLang);
+                    }
+                    
+                    // 点击选项后关闭菜单
+                    closeMenu();
+                });
+            });
+            
+            // 点击页面其他地方关闭菜单
+            document.addEventListener('click', () => {
+                closeMenu();
+            });
+            
+            // 防止菜单内部点击关闭菜单
+            languageMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+            
+            // 键盘事件：ESC键关闭菜单
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+            
+            // 初始化语言显示
+            updateLanguageDisplay();
+            
+            // 检查本地存储中是否有保存的主题偏好
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                themeSwitch.checked = true; // 暗色主题时开关选中
+            } else {
+                themeSwitch.checked = false; // 亮色主题时开关未选中
+            }
+            
+            // 主题切换事件监听
+            themeSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    // 切换到暗色主题
+                    body.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    // 切换到亮色主题
+                    body.classList.remove('dark-theme');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // 语音切换按钮功能
+            const voiceToggle = document.querySelector('.voice-toggle');
+            voiceToggle.addEventListener('click', function() {
+                alert('语音功能切换');
+                // 这里可以添加实际的语音切换逻辑
+            });
+            
+            // 轮播指示器点击切换功能
+            function setupCarouselIndicators() {
+                const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+                const items = document.querySelectorAll('.carousel .carousel-item');
+                
+                if (indicators.length === 0 || items.length === 0) {
+                    console.log('轮播元素未找到');
+                    return;
+                }
+                
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        
+                        if (isNaN(index) || index < 0 || index >= items.length) {
+                            console.log('无效的轮播索引');
+                            return;
+                        }
+                        
+                        // 移除所有active类
+                        items.forEach(item => item.classList.remove('active'));
+                        indicators.forEach(ind => ind.classList.remove('active'));
+                        
+                        // 添加active类到对应项
+                        items[index].classList.add('active');
+                        this.classList.add('active');
+                        console.log('切换到轮播项:', index);
+                    });
+                });
+                
+                console.log('轮播指示器初始化完成');
+            }
+            
+            // 确保DOM完全加载后执行
+            setupCarouselIndicators();
+        });
+    </script>
+</body>
+</html>
